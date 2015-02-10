@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="noteApp">
+    <head>
+        <meta charset="UTF-8">
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.min.js" type="text/javascript"></script>
+        <script src="./app/noteApp.js" type="text/javascript"></script>
+        <script src="./app/noteController.js" type="text/javascript"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" type="text/css" rel="stylesheet"/>
+    </head>
+    <body>
+        <br><br>
+        <div ng-controller="NoteController as note">
+            <div class="row-fluid">
+                <div class="col-md-6 col-md-offset-3">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <form>
+                                <label for="note">Note :</label><br>
+                                <textarea ng-model="messageNote" class="form-control" id="note" maxlength="100" ng-change="note.change()"></textarea><br>
+                                <button ng-click="note.save()" class="btn btn-primary">Enregistrer</button>
+                                <button ng-click="note.clear()" class="btn btn-primary">Effacer</button>
+                            </form>
+                            <br>
+                            <div class="alert alert-info">Nombre de caractères restants : <strong>{{note.count()}}</strong></div>
+                            <div class="alert alert-{{note.info[0]}}" ng-show="note.display">{{note.info[1]}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
